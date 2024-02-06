@@ -1,0 +1,24 @@
+class Solution {
+    public static List<Integer> getRow(int rowIndex) {
+        List<List<Integer>> triangle = new ArrayList<>();
+        if (rowIndex < 0){
+            return null;
+        }
+
+        for (int i = 0; i < rowIndex + 1; i++) {
+            List<Integer> row = new ArrayList<>();
+            for (int j = 0; j < i+1; j++) {
+                if (j == 0 || j == i){
+                    row.add(1);
+                }
+                else {
+                    row.add(triangle.get(i-1).get(j-1) + triangle.get(i-1).get(j));
+                }
+            }
+            triangle.add(row);
+        }
+
+        return triangle.get(rowIndex);
+
+    }
+}
