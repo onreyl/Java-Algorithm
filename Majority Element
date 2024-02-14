@@ -1,0 +1,16 @@
+class Solution {
+    public static int majorityElement(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int maxCount = 0;
+        int majorityElement = 0;
+        for (int x : nums) {
+            int count = map.getOrDefault(x, 0) + 1;
+            map.put(x, count);
+            if (maxCount < map.get(x)){
+                maxCount = map.get(x);
+                majorityElement = x;
+            }
+        }
+        return majorityElement;
+    }
+}
