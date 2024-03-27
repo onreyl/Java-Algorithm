@@ -1,0 +1,19 @@
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        boolean[] cache = new boolean[1001];
+        int[] ans = new int[Math.max(nums1.length, nums2.length)];
+
+        for(int i: nums1){
+            cache[i] = true;
+        }
+        int j=0;
+        for(int i: nums2){
+            if(cache[i]){
+                cache[i] = false;
+                ans[j++] = i;
+            }
+        }
+
+        return Arrays.copyOfRange(ans, 0, j);
+    }
+}
