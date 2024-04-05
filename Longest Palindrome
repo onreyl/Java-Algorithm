@@ -1,0 +1,15 @@
+class Solution {
+    public int longestPalindrome(String s) {
+        int[] arr = new int[58];
+        for (char c : s.toCharArray()){
+            arr[c - 'A']++;
+        }
+        int length = 0;
+        for (int i : arr){
+            if (i % 2 == 0) length += i;
+            else if (i > 1) length += i - 1;
+        }
+        if (s.length() > length) length++;
+        return length;
+    }
+}
